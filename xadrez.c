@@ -1,32 +1,35 @@
 #include <stdio.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+int main () {
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    printf("Bem Vindo ao Xadrez em C!\n");
 
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
+// Mover a Torre 5 casas para direita
 
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
+printf("Faça o movimento da Torre para 5 casas à direita\n");
+for (int i = 0; i < 5; i++) {
+    printf("Direita\n"); // Imprime a direção do movimento
 
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
+}
 
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
+printf("Faça a movimentaçaõ do Bispo em 5 casas na Diagonal Superior Direita\n");
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+char mov1[50] = "Cima";
+char mov2[50] = "Direita";
+int b = 0;
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+while (b <= 5) { //Condição
+        printf("%s,%s\n", mov1, mov2); //Saída
+        b++; // Incremento
+    }
+    printf("Agora movimente a Rainha para a direção Esquerda por 5 vezes seguidas\n");
+int r = 1; //Variável de incremento
+   
+    do { //Entrada (1x pelo menos) 
+        printf("Esquerda\n", r); //Saída
+        r++; //Incremento
+    } while (r <= 5); //Condição
 
-    return 0;
+return 0;
+
 }
