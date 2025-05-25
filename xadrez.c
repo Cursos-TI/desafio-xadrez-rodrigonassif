@@ -1,57 +1,81 @@
 #include <stdio.h>
 
-int main() {
-    // Mover a Torre 5 casas para a direita
-    printf("Faça o movimento da Torre para 5 casas à direita\n");
-    for (int i = 0; i < 5; i++) {
-        printf("Direita\n"); // Imprime a direção do movimento
+// Função recursiva para mover a Torre para a direita
+void moverTorre(int passos) {
+    if (passos > 0) {
+    printf("Direita\n");
+    moverTorre(passos - 1);
     }
+    
+}
 
-    // Mover o Bispo 5 casas na Diagonal Superior Direita
-    printf("Faça a movimentaçaõ do Bispo em 5 casas na Diagonal Superior Direita\n");
-
-    char mov1[50] = "Cima";
-    char mov2[50] = "Direita";
-    int b = 0;
-
-    while (b <= 5) { // Condição
-        printf("%s,%s\n", mov1, mov2); // Saída
-        b++; // Incremento
+// Função recursiva para mover a Rainha para a esquerda
+void moverRainha(int passos) {
+    if (passos > 0) {
+    printf("Esquerda\n");
+    moverRainha(passos - 1);
     }
-
-    // Mover a Rainha 5 casas para a esquerda
-    printf("Agora movimente a Rainha para a direção Esquerda por 5 vezes seguidas\n");
-
-    int r = 1; // Variável de incremento
-    do {
-        printf("Esquerda\n"); // Saída
-        r++; // Incremento
-    } while (r <= 5); // Condição
-
-    // Espaço visual entre movimentos anteriores e do Cavalo
-    printf("\n");
-
-    // ---------------- MOVIMENTO DO CAVALO ----------------
-
-    // Movimento do Cavalo: duas casas para baixo e uma para a esquerda
-    printf("Movimento do Cavalo: 2 casas para Baixo e 1 casa para Esquerda\n");
-
-    int passos_baixo = 2;      // Número de casas para baixo
    
+}
 
-    // Loop externo (obrigatoriamente um 'for') para o movimento para baixo
-    for (int i = 0; i < passos_baixo; i++) {
-        printf("Baixo\n"); // Cada passo para baixo
+// Função recursiva para movimentação do Bispo com loops aninhados
+void moverBispo(int vertical, int horizontal) {
+    if (vertical > 0) {
 
-        // Loop interno (while) apenas para fins de exemplo de loop aninhado
-        int j = 0;
-        while (j < 1 && i == passos_baixo - 1) { // Executa ao final do movimento para baixo
-            printf("Esquerda\n"); // Movimento perpendicular após os dois passos
-            j++;
+    // Loop interno representa movimento horizontal
+    for (int j = 0; j < horizontal; j++) {
+        printf("Direita ");
+    }
+    // Movimento vertical impresso após o horizontal
+    printf("-> Cima\n");
+
+    moverBispo(vertical - 1, horizontal);
+}
+
+    }
+
+
+int main() {
+
+    printf("**** Bem Vindo ao Desafio Mestre do Xadrez em C! ****\n");
+    // Número de passos para cada peça
+    int passosTorre = 5;
+    int passosRainha = 5;
+    int passosBispo = 5; // vertical
+    int passosBispoHorizontal = 1; // horizontal por passo vertical
+
+    // ------------------- TORRE -------------------
+    printf("Movimento da Torre: %d casas para Direita\n", passosTorre);
+    moverTorre(passosTorre);
+
+    // ------------------- BISPO -------------------
+    printf("\nMovimento do Bispo: %d casas na Diagonal Superior Direita\n", passosBispo);
+    moverBispo(passosBispo, passosBispoHorizontal);
+
+    // ------------------- RAINHA -------------------
+    printf("\nMovimento da Rainha: %d casas para Esquerda\n", passosRainha);
+    moverRainha(passosRainha);
+
+  // ------------------- CAVALO -------------------
+    printf("\nMovimento do Cavalo: 2 casas para Cima e 1 para Direita (movimento em L)\n");
+
+    int cima = 2;
+    int direita = 1;
+
+    // Loop complexo: aninhamento com múltiplas variáveis
+    for (int i = 1; i <= cima; i++) {
+        for (int j = 1; j <= direita; j++) {
+            // Executa impressão apenas quando i == cima e j == direita
+            // Isso garante que o cavalo se mova duas casas para cima e uma para direita
+            if (i < cima) {
+                printf("Cima\n");
+            } else if (i == cima && j == 1) {
+                printf("Cima\n");     // Último passo para cima
+                printf("Direita\n"); // Movimento horizontal no fim
+            }
         }
     }
 
-    // ------------------------------------------------------
-
     return 0;
 }
+
